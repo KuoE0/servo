@@ -1743,6 +1743,7 @@ impl ScriptThread {
                                      loader,
                                      referrer,
                                      referrer_policy);
+        debug!("new document ({:p}) created in script_thread({:p})", &document, &self);
         if using_new_context {
             browsing_context.init(&document);
         } else {
@@ -2227,6 +2228,7 @@ fn dom_last_modified(tm: &Tm) -> String {
 }
 
 fn update_with_current_time_ms(marker: &Cell<u64>) {
+    debug!("update_with_current_time_ms called!");
     let time = get_time();
     let current_time_ms = time.sec * 1000 + time.nsec as i64 / 1000000;
     marker.set(current_time_ms as u64);

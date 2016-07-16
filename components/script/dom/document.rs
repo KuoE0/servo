@@ -1620,6 +1620,7 @@ impl Document {
     }
 
     pub fn set_request_start(&self, t: u64) {
+        debug!("set request_start to {}", t);
         self.request_start.set(t);
     }
 
